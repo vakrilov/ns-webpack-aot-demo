@@ -2,8 +2,11 @@
 
 *.js.map
 *.js
+!aot-fix.js
 
 /platforms
 /hooks
 /lib
 /node_modules
+app/aot
+report

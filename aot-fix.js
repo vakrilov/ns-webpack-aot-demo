@@ -1,28 +1,24 @@
-#!/usr/bin/env node
-var glob = require("glob");
-var fs = require("fs");
-// var replace = require("replace");
+function fixRelativeImports(fileName, source) {
+    console.log(" ----- Applying aot fix for: " + fileName)
+    // console.log(" ----- SOURCE START -----: ")
+    // console.log(source)
+    // console.log(" ----- SOURCE  END -----: ")
 
-var AOT_DIR = "./app/aot";
+    var result = source;
+    result = result.replace(/(\.\.\/)?platform\'/g, 'platform\'');
+    result = result.replace(/(\.\.\/)?ui\/frame\'/g, 'ui/frame\'');
+    result = result.replace(/(\.\.\/)?ui\/page\'/g, 'ui/page\'');
 
-console.log("-----  Fixup start!");
+    if (source !== result) {
+        console.log(" --!-- Imports fixed for: " + fileName)
+    }
 
-// Find file
-glob.sync(AOT_DIR + "/**/*.ts").forEach(function (fileName, index, array) {
-  // console.log("processing: " + fileName);
-  var data = fs.readFileSync(fileName, 'utf8')
+    return result;
+}
 
-  var result = data;
-  result = result.replace(/(..\/)*platform\'/g, 'platform\'');
-  result = result.replace(/(..\/)*ui\/frame\'/g, 'ui/frame\'');
-  result = result.replace(/(..\/)*ui\/page\'/g, 'ui/page\'');
 
-  if (data !== result) {
-    console.log("Imports fixed for: " + fileName);
-  }
-
-  fs.writeFileSync(fileName, result, 'utf8');
-
-});
-
-console.log("-----  Fixup done!");
+module.exports = function(source, map) {
+  this.cacheable();
+  var resultSource = fixRelativeImports(this.resource, source);
+  this.callback(null, resultSource, map);
+};

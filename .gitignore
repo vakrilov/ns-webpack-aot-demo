@@ -9,3 +9,5 @@ app/**/*.js
 /node_modules
 app/aot
 report
+
+npm-debug.log

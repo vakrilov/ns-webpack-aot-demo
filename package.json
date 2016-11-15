@@ -29,12 +29,14 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.1.2",
+    "@ngtools/webpack": "^1.1.4",
     "awesome-typescript-loader": "~2.2.4",
     "babel-traverse": "6.18.0",
     "babel-types": "6.18.0",
     "babylon": "6.13.1",
     "copy-webpack-plugin": "~3.0.1",
     "html-loader": "~0.4.3",
+    "raw-loader": "^0.5.1",
     "lazy": "1.0.11",
     "nativescript-dev-typescript": "^0.3.2",
     "nativescript-dev-webpack": "^0.2.5",
@@ -49,8 +51,8 @@
     "clean-ios": "tns clean-app ios",
     "prewebpack-android": "npm run clean-android",
     "prewebpack-ios": "npm run clean-ios",
-    "webpack-android": "npm run clean-android && webpack --config=webpack.android.js --progress",
-    "webpack-ios": "npm run clean-ios && webpack --config=webpack.ios.js --progress",
+    "webpack-android": "webpack --config=webpack.android.js --progress --display-error-details",
+    "webpack-ios": "npm run clean-ios && webpack --config=webpack.ios.js --progress --display-error-details",
     "prestart-android-bundle": "npm run webpack-android",
     "prestart-ios-bundle": "npm run webpack-ios",
     "start-android-bundle": "tns run android --bundle --disable-npm-install",
@@ -60,6 +62,9 @@
     "build-android-bundle": "tns build android --bundle --disable-npm-install",
     "build-ios-bundle": "tns build ios --bundle --disable-npm-install",
     "aot": "ngc -p tsconfig-aot.json",
-    "postaot": "node aot-fix.js"
+    "postaot": "node aot-fix.js",
+
+    "ngtools": "webpack --config=webpack.android.js --progress --display-error-details"
+    
   }
 }

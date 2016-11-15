@@ -19,4 +19,4 @@ import { AboutModule } from "./about/about.module";
     AboutModule
   ],
 })
-export class AppComponentModule { }
+export class AppModule { }

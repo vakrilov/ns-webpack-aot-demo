@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'ns-home',
-  templateUrl: `./home.component.html`
+  templateUrl: "./home.component.html"
 })
 export class HomeComponent {
   public counter: number = 16;

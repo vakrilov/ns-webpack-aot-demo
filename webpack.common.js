@@ -9,7 +9,7 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 
 var AotPlugin = require('@ngtools/webpack').AotPlugin;
 
-module.exports = function(platform, destinationApp) {
+module.exports = function (platform, destinationApp) {
     var entry = {};
     entry.bundle = "./" + nsWebpack.getEntryModule();
     entry.vendor = "./vendor";
@@ -51,18 +51,10 @@ module.exports = function(platform, destinationApp) {
         },
         module: {
             loaders: [
-                // {
-                //     test: /\.html$/,
-                //     loader: "html"
-                // },
                 {
-                    test: /\.html$/,
+                    test: [/\.css$/, /\.html$/],
                     loader: "raw"
                 },
-                // {
-                //     test: /\.ts$/,
-                //     loader: 'awesome-typescript-loader'
-                // },
                 {
                     test: /\.ts$/,
                     loaders: ['@ngtools/webpack', 'aot-fix']
@@ -86,8 +78,6 @@ module.exports = function(platform, destinationApp) {
             }),
             new CopyWebpackPlugin([
                 { from: "**/*.css" },
-                { from: "**/*.html" },
-                { from: "**/*.xml", ignore: "App_Resources/**" },
             ]),
             new nsWebpack.GenerateBundleStarterPlugin([
                 "./vendor",
@@ -105,7 +95,19 @@ module.exports = function(platform, destinationApp) {
                 generateStatsFile: true,
                 reportFilename: path.join(__dirname, "report", platform + '-report.html'),
                 statsFilename: path.join(__dirname, "report", platform + '-stats.json'),
-            })
+            }),
+            // new webpack.optimize.UglifyJsPlugin({
+            //     mangle: false,
+            //     // compress: false,
+            //     // beautify: true,
+            //     compress: {
+            //         warnings: true
+            //     },
+            //     output: {
+            //         comments: false
+            //     },
+            //     sourceMap: false
+            // }),
         ]
     };
 };

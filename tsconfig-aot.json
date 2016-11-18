@@ -11,10 +11,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "types": []
   },
-  "files": [
-    "references.d.ts",
-    "app/app.module.ts"
-  ],
+
   "angularCompilerOptions": {
     "skipMetadataEmit": true,
     "debug": true

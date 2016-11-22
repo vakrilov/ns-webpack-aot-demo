@@ -1,5 +1,5 @@
 function fixRelativeImports(fileName, source) {
-    console.log(" ----- Applying aot fix for: " + fileName)
+    console.log("Aot fix: " + fileName)
 
     var result = source;
     result = result.replace(/(\.\.\/)+platform\'/g, 'platform\'');
@@ -10,7 +10,7 @@ function fixRelativeImports(fileName, source) {
         // console.log(" ----- SOURCE START -----$$$$$$$$$$$$$$$$$$:-----$$$$$$$$$$$$$$$$$$:-----$$$$$$$$$$$$$$$$$$: ")
         // console.log(source)
         // console.log(" ----- SOURCE  END -----: ")
-        console.log(" --!-- Imports fixed for: " + fileName)
+        // console.log(" --!-- Imports fixed for: " + fileName)
         // console.log(" ----- SOURCE result -----: ")
         // console.log(result)
         // console.log(" ----- SOURCE  result -----$$$$$$$$$$$$$$$$$$:-----$$$$$$$$$$$$$$$$$$:-----$$$$$$$$$$$$$$$$$$:: ")

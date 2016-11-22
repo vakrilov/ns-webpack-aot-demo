@@ -62,8 +62,7 @@
         "prebuild-ios-bundle": "npm run webpack-ios",
         "build-android-bundle": "tns build android --bundle --disable-npm-install",
         "build-ios-bundle": "tns build ios --bundle --disable-npm-install",
-        "aot": "ngc -p tsconfig-aot.json",
-        "postaot": "node aot-fix.js",
-        "ngtools": "webpack --config=webpack.android.js --progress --display-error-details"
+        "ngtools": "webpack --config=webpack.android.js --progress --display-error-details",
+        "wp": "webpack --config=webpack.ios.js --progress --display-error-details"
     }
 }

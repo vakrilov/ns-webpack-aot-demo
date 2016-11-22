@@ -5,8 +5,10 @@ var path = require("path");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require("path");
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 var AotPlugin = require('@ngtools/webpack').AotPlugin;
+
+var nativescriptTarget = require('./webpack-plugins/nativescript-target');
+var aotFixPath = path.join(__dirname, "webpack-plugins", "aot-fix.js");
 
 module.exports = function (platform, destinationApp) {
     var entry = {};
@@ -15,10 +17,12 @@ module.exports = function (platform, destinationApp) {
 
     return {
         context: path.resolve("./app"),
+        target: nativescriptTarget,
         entry: entry,
         output: {
             pathinfo: true,
             path: path.resolve(destinationApp),
+            // path: "dist",
             libraryTarget: "commonjs2",
             filename: "[name].js",
             jsonpFunction: "nativescriptJsonp"
@@ -26,7 +30,7 @@ module.exports = function (platform, destinationApp) {
 
         resolveLoader: {
             alias: {
-                "aot-fix": path.join(__dirname, "aot-fix.js"),
+                "aot-fix": aotFixPath,
             },
             moduleExtensions: ['-loader']
         },
@@ -48,12 +52,13 @@ module.exports = function (platform, destinationApp) {
             "http": false,
             "timers": false,
             "setImmediate": false,
+            "console": false,
         },
         module: {
             loaders: [
                 {
                     test: [/\.css$/, /\.html$/],
-                    loader: "raw"
+                    loader: "raw-loader"
                 },
                 {
                     test: /\.ts$/,
@@ -62,7 +67,7 @@ module.exports = function (platform, destinationApp) {
                 {
                     test: /\.scss$/,
                     loaders: [
-                        'raw', 'resolve-url', 'sass'
+                        'raw-loader', 'resolve-url', 'sass'
                     ]
                 },
             ]
@@ -83,7 +88,7 @@ module.exports = function (platform, destinationApp) {
                 "./vendor",
                 "./bundle",
             ]),
-            new nsWebpack.NativeScriptJsonpPlugin(),
+            // new nsWebpack.NativeScriptJsonpPlugin(),
             new AotPlugin({
                 tsConfigPath: 'tsconfig-aot.json',
                 entryModule: 'app/app.module#AppModule',

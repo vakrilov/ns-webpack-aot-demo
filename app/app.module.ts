@@ -4,7 +4,6 @@ import { NgModule, NO_ERRORS_SCHEMA, NgModuleFactoryLoader } from "@angular/core
 import { AppComponent } from "./app.component";
 import { AboutModule } from "./about/about.module";
 import { HomeComponent } from "./home/home.component";
-import { NsModuleLoader } from "./ns-module-loader";
 
 @NgModule({
   declarations: [
@@ -12,7 +11,6 @@ import { NsModuleLoader } from "./ns-module-loader";
     HomeComponent
   ],
   providers: [
-    { provide: NgModuleFactoryLoader, useClass: NsModuleLoader }
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],

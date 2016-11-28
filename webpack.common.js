@@ -3,7 +3,6 @@ var nsWebpack = require("nativescript-dev-webpack");
 var sources = require("webpack-sources");
 var path = require("path");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var fs = require("fs");
 var path = require("path");
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -28,11 +27,12 @@ module.exports = function (platform, destinationApp) {
         resolveLoader: {
             alias: {
                 "aot-fix": path.join(__dirname, "aot-fix.js"),
-                "raw": path.join(__dirname, "node_modules/raw-loader"),
-            }
+            },
+            moduleExtensions: ['-loader']
         },
         resolve: {
             extensions: [
+                ".aot.ts",
                 ".ts",
                 ".js",
                 "." + platform + ".ts",

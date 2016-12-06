@@ -1,7 +1,7 @@
 <StackLayout>
-    <Label text="Home Page DYNAMIC" class="title"></Label>
-    <Button text="TAP" (tap)="onTap()"></Button>
-    <Label [text]="message" class="message" textWrap="true"></Label>
-    <Button text="about" nsRouterLink="/about"></Button>
-    <Button text="lazy" nsRouterLink="/lazy"></Button>
+    <Label text="Home Page" class="h1 text-center"></Label>
+    <Button text="TAP" (tap)="onTap()" class="btn btn-primary btn-active"></Button>
+    <Label [text]="message" class="text-center" textWrap="true"></Label>
+    <Button text="about" nsRouterLink="/about" class="btn btn-primary btn-active"></Button>
+    <Button text="lazy" nsRouterLink="/lazy" class="btn btn-primary btn-active"></Button>
 </StackLayout>

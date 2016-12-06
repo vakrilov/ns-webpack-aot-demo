@@ -1,6 +1,6 @@
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { NgModule, NO_ERRORS_SCHEMA, NgModuleFactoryLoader } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { AboutModule } from "./about/about.module";
 import { HomeComponent } from "./home/home.component";

@@ -1,28 +1,70 @@
 {
-  // Use IntelliSense to learn about possible Node.js debug attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceRoot}/node_modules/.bin/webpack",
-      "args": [
-        "--config=webpack.android.js", "--progress", "--display-error-details"
-      ],
-      "cwd": "${workspaceRoot}",
-      "outFiles": [],
-      "sourceMaps": true
-    },
-    {
-      "type": "node",
-      "request": "attach",
-      "name": "Attach to Process",
-      "port": 5858,
-      "outFiles": [],
-      "sourceMaps": true
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Sync on iOS",
+            "type": "nativescript",
+            "platform": "ios",
+            "request": "launch",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "diagnosticLogging": false,
+            "emulator": false,
+            "rebuild": false,
+            "syncAllFiles": false
+        },
+        {
+            "name": "Launch on iOS",
+            "type": "nativescript",
+            "platform": "ios",
+            "request": "launch",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "diagnosticLogging": false,
+            "emulator": false,
+            "rebuild": true
+        },
+        {
+            "name": "Attach on iOS",
+            "type": "nativescript",
+            "platform": "ios",
+            "request": "attach",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "diagnosticLogging": false,
+            "emulator": false
+        },
+        {
+            "name": "Sync on Android",
+            "type": "nativescript",
+            "platform": "android",
+            "request": "launch",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "diagnosticLogging": false,
+            "emulator": false,
+            "rebuild": false
+        },
+        {
+            "name": "Launch on Android",
+            "type": "nativescript",
+            "platform": "android",
+            "request": "launch",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "diagnosticLogging": false,
+            "emulator": false,
+            "rebuild": true
+        },
+        {
+            "name": "Attach on Android",
+            "type": "nativescript",
+            "platform": "android",
+            "request": "attach",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "diagnosticLogging": false,
+            "emulator": false
+        }
+    ]
 }

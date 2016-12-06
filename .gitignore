@@ -9,8 +9,9 @@ app/**/*.js
 /node_modules
 app/aot
 report
+/dist
+/dist_compare
 
 npm-debug.log
-
 /dist
 /dist_compare
